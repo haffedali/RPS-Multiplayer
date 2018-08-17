@@ -1,0 +1,24 @@
+#game-box {
+    margin: auto;
+    height: 300px;
+    width: 300px;
+    background-color: green;
+    float: left;
+    position: relative;
+    left: 200px;
+}
+
+.play-box {
+    background-color: red;
+    height: 200px;
+    width: 200px;
+    float: left;
+}
+
+#player-two-box {
+    float: right;
+}
+
+#chat-box {
+    
+}

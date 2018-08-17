@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>Rock Paper Scissors Cup!</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<div class="container">
+  <div class="play-box" id="player-one-box">
+    <img id="player-one-image">
+    <button class="play1" value="rock">Rock</button>
+    <button class="play1" value="paper">Paper</button>
+    <button class="play1" value="scissors">Scissors</button>
+    <button id="player-one-join">Join!</button>
+  </div>
+  <div id="game-box">
+    <button id="start">Play</button>
+  </div>
+  <div class="play-box" id="player-two-box">
+    <img id="player-two-image">
+    <button class="play2" value="rock">Rock</button>
+    <button class="play2" value="paper">Paper</button>
+    <button class="play2" value="scissors">Scissors</button>
+    <button id="player-two-join">Join!</button>
+  </div>
+  <div id="chat-box"></div>
+</div>
+<script src="logic.js"></script>
+</body>
