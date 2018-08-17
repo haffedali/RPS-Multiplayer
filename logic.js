@@ -99,7 +99,7 @@ $("#player-one-join").on("click", function() {
     battleRoomRef.update({
         player1: 'true',
     })
-    if (sessionStorage.getItem("player1") === "no"){
+    if (val === "no"){
         sessionStorage.setItem("player1", "ready")
         console.log(val);
     }
