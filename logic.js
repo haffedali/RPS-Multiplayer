@@ -80,20 +80,22 @@ connectedRef.on("value", function(snap) {
 
 //On click functions
 $(".play1").on("click", function() {
-    if (val === "ready"){
+    //if (val === "ready"){
         player1choice = this.value;
+        console.log(player1choice);
         database.ref("choices").update({
             player1choice: player1choice,
         })
-    }
+    //}
 })
 $(".play2").on("click", function() {
-    if (val2 === "ready"){
+    //if (val2 === "ready"){
         player2choice = this.value;
+        console.log(player2choice);
         database.ref("choices").update({
         player2choice: player2choice,
         })
-    }
+    //}
 });
 $("#player-one-join").on("click", function() {
     battleRoomRef.update({
@@ -148,9 +150,13 @@ function rpsCheck() {
                     break;
                 case "paper":
                     player2score += 1;
+                    $(".score").html(player1score);
+                    $(".score2").html(player2score);
                     break;
                 case "scissors":
                     player1score += 1;
+                    $(".score").html(player1score);
+                    $(".score2").html(player2score);
                     break;
             }
             break;
@@ -158,12 +164,16 @@ function rpsCheck() {
             switch(player2choice) {
                 case "rock":
                     player1score += 1;
+                    $(".score").html(player1score);
+                    $(".score2").html(player2score);
                     break;
                 case "paper":
                     ties += 1;
                     break;
                 case "scissors":
                     player2score += 1;
+                    $(".score").html(player1score);
+                    $(".score2").html(player2score);
                     break;
             };
             break;
@@ -171,9 +181,13 @@ function rpsCheck() {
             switch(player2choice) {
                 case "rock":
                     player2score += 1;
+                    $(".score").html(player1score);
+                    $(".score2").html(player2score);
                     break;
                 case "paper":
                     player1score += 1;
+                    $(".score").html(player1score);
+                    $(".score2").html(player2score);
                     break;
                 case "scissors": 
                     ties += 1;
@@ -190,6 +204,7 @@ function CountDown() {
     console.log('just workin');
     if (timer > 0){
         timer--;
+        $("#timer").html(timer);
     }
     else {
         count++;

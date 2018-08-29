@@ -5,7 +5,7 @@
     background-color: green;
     float: left;
     position: relative;
-    left: 200px;
+    left: 100px;
 }
 
 .play-box {
@@ -13,6 +13,15 @@
     height: 200px;
     width: 200px;
     float: left;
+    
+}
+.play-box2 {
+    background-color: red;
+    height: 200px;
+    width: 200px;
+    float: right;
+    position: relative;
+    left: 100px;
 }
 
 #player-two-box {
@@ -21,4 +30,35 @@
 
 #chat-box {
     
+}
+
+.score {
+    height: 100px;
+    width: 100px;
+    background-color: blue;
+    float: left;
+    position: relative;
+    left: 50px;
+    text-align: center;
+}
+
+.score2 {
+    height: 100px;
+    width: 100px;
+    background-color: blue;
+    float: right;
+    position: relative;
+    right: 300px;
+    text-align: center;
+}
+
+#timer {
+    margin: auto;
+    width: 600px;
+    height: 150px;
+    background-color:lightcoral;
+    position: relative;
+    top: 350px;
+    text-align: center;
+
 }
