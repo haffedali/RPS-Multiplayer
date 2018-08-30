@@ -22,9 +22,12 @@ var player1choice;
 var player2choice;
 var player1score = 0;
 var player2score = 0;
+var player2scoreD;
+var player1scoreD;
 var ties = 0;
 var audience;
 var timer = 10;
+var timerD;
 var battleRoomUsed = 'false';
 var play1status = 'false';
 var play2status = 'false';
@@ -48,8 +51,19 @@ database.ref("choices").set({
     player2choice: "wait",
 })
 
+database.ref("score").set({
+    player1score: "0",
+    player2score: "0",
+})
+database.ref("timer").set({
+    timer: "10",
+})
+
+
 var battleRoomRef = database.ref("battleroom");
 var choicesRef = database.ref("choices");
+var scoresRef = database.ref("score");
+var timerRef = database.ref("timer");
 var connectionsRef = database.ref("/connections");
 
 /// Data event listeners
@@ -64,6 +78,18 @@ choicesRef.on('value', function(snapshot) {
     player1choice = snapshot.child("player1choice").val();
     player2choice = snapshot.child('player2choice').val();
 });
+
+scoresRef.on('value', function(snapshot){
+    player2scoreD = snapshot.child("player2score").val();
+    player1scoreD = snapshot.child("player1score").val();
+    $(".score").html(player1scoreD);
+    $(".score2").html(player2scoreD);
+})
+
+timerRef.on('value', function(snapshot){
+    timerD = snapshot.child("timer").val();
+    $("#timer").html(timerD);
+})
 
 // '.info/connected' is a special location provided by Firebase that is updated every time
 // the client's connection state changes.
@@ -150,13 +176,21 @@ function rpsCheck() {
                     break;
                 case "paper":
                     player2score += 1;
-                    $(".score").html(player1score);
-                    $(".score2").html(player2score);
+                    // $(".score").html(player1scoreD);
+                    // $(".score2").html(player2scoreD);
+                    scoresRef.update({
+                        player1score: [player1score],
+                        player2score: [player2score],
+                    });
                     break;
                 case "scissors":
                     player1score += 1;
-                    $(".score").html(player1score);
-                    $(".score2").html(player2score);
+                    // $(".score").html(player1scoreD);
+                    // $(".score2").html(player2scoreD);
+                    scoresRef.update({
+                        player1score: [player1score],
+                        player2score: [player2score],
+                    });
                     break;
             }
             break;
@@ -164,16 +198,24 @@ function rpsCheck() {
             switch(player2choice) {
                 case "rock":
                     player1score += 1;
-                    $(".score").html(player1score);
-                    $(".score2").html(player2score);
+                    // $(".score").html(player1scoreD);
+                    // $(".score2").html(player2scoreD);
+                    scoresRef.update({
+                        player1score: [player1score],
+                        player2score: [player2score],
+                    });
                     break;
                 case "paper":
                     ties += 1;
                     break;
                 case "scissors":
                     player2score += 1;
-                    $(".score").html(player1score);
-                    $(".score2").html(player2score);
+                    // $(".score").html(player1scoreD);
+                    // $(".score2").html(player2scoreD);
+                    scoresRef.update({
+                        player1score: [player1score],
+                        player2score: [player2score],
+                    });
                     break;
             };
             break;
@@ -181,13 +223,21 @@ function rpsCheck() {
             switch(player2choice) {
                 case "rock":
                     player2score += 1;
-                    $(".score").html(player1score);
-                    $(".score2").html(player2score);
+                    // $(".score").html(player1scoreD);
+                    // $(".score2").html(player2scoreD);
+                    scoresRef.update({
+                        player1score: [player1score],
+                        player2score: [player2score],
+                    });
                     break;
                 case "paper":
                     player1score += 1;
-                    $(".score").html(player1score);
-                    $(".score2").html(player2score);
+                    // $(".score").html(player1scoreD);
+                    // $(".score2").html(player2scoreD);
+                    scoresRef.update({
+                        player1score: [player1score],
+                        player2score: [player2score],
+                    });
                     break;
                 case "scissors": 
                     ties += 1;
@@ -204,7 +254,11 @@ function CountDown() {
     console.log('just workin');
     if (timer > 0){
         timer--;
-        $("#timer").html(timer);
+        timerD = timer;
+        // $("#timer").html(timerD);
+        timerRef.update({
+            timer: [timer],
+        })
     }
     else {
         count++;
